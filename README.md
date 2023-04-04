@@ -16,8 +16,6 @@ apt-get install unbound unbound-host
 
 # Create dirs and files
 
-mkdir /etc/wireguard
-
 mkdir /etc/wireguard/keys
 
 wg genkey | tee /etc/wireguard/keys/server-private-key | wg pubkey > /etc/wireguard/keys/server-public-key

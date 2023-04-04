@@ -61,7 +61,7 @@ systemctl enable unbound
 
 # Test
 
-nslookup www.googlec.com 10.200.200.1
+nslookup www.google.com 10.200.200.1
 
 # Add new client
 

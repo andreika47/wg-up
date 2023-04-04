@@ -42,6 +42,7 @@ Edit the file /etc/sysctl.conf and set the following line as:
 net.ipv4.ip_forward=1
 
 sysctl -p
+
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
 # Setup firewall and NAT

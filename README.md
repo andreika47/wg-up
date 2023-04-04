@@ -14,6 +14,8 @@ modprobe wireguard
 
 apt-get install unbound unbound-host
 
+apt install -y iptables-persistent
+
 # Create dirs and files
 
 mkdir /etc/wireguard/keys
@@ -49,6 +51,10 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 see postup.sh
 
+systemctl enable netfilter-persistent
+
+netfilter-persistent save
+
 # Setup DNS
 
 curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache
@@ -57,7 +63,13 @@ touch /etc/unbound/unbound.conf
 
 chown -R unbound:unbound /var/lib/unbound
 
+systemctl stop systemd-resolved
+
+systemctl disable systemd-resolved
+
 systemctl enable unbound
+
+systemctl start unbound
 
 # Test
 
